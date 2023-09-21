@@ -1,0 +1,15 @@
+/* Estilo para el contenedor principal del componente */
+.author-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el nombre del autor */
+  .author-item ion-item {
+    font-weight: bold;
+    padding: 10px;
+  }
+  
