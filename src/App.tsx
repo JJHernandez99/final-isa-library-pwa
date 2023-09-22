@@ -32,6 +32,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Page2 from './pages/Page2';
 import Page1 from './pages/Page1';
+import Page3 from './pages/Page3';
 
 setupIonicReact();
 
@@ -46,6 +47,9 @@ const App: React.FC = () => (
                     <Route exact path="/authors">
                         <Page2/>
                     </Route>
+                    <Route exact path="/publishers">
+                        <Page3/>
+                    </Route>
                     <Route exact path="/">
                         <Redirect to="/books"/>
                     </Route>
@@ -58,6 +62,10 @@ const App: React.FC = () => (
                     <IonTabButton tab="page2" href="/authors">
                         <IonIcon aria-hidden="true" icon={personOutline}/>
                         <IonLabel>Authors</IonLabel>
+                    </IonTabButton>
+                    <IonTabButton tab="page3" href="/publishers">
+                        <IonIcon aria-hidden="true" icon={personOutline}/>
+                        <IonLabel>Publishers</IonLabel>
                     </IonTabButton>
                 </IonTabBar>
             </IonTabs>

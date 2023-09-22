@@ -81,13 +81,13 @@ self.addEventListener('message', (event) => {
 // Any other custom service worker logic can go here.
 // Books
 registerRoute(
-    // Check to see if the request is a navigation to a new page
+    // Verifca si la solicitud es una navegación a una nueva pagina con "books" en la URL 
     ({ url }) => url.pathname.match(new RegExp("books")),
-    // Use the strategy
+    // Se utliza la estrategia NetworkFirst (primero red, luego cache)
     new NetworkFirst({
-        cacheName: 'books',
+        cacheName: 'books', //Nombre de la cache 
         plugins: [
-            // Ensure that only requests that result in a 200 status are cached
+            // Asegura que solo se almacenen en caché respuestas con estado 200
             new CacheableResponsePlugin({
                 statuses: [200],
             }),
@@ -97,16 +97,28 @@ registerRoute(
 
 // Authors
 registerRoute(
-    // Check to see if the request is a navigation to a new page
+    // Utiliza la estrategia CacheFirst (primero caché, luego red).
     ({ url }) => url.pathname.match(new RegExp("authors")),
     // Use the strategy
     new CacheFirst({
         cacheName: 'authors',
         plugins: [
-            // Ensure that only requests that result in a 200 status are cached
             new CacheableResponsePlugin({
                 statuses: [200],
             }),
         ],
     })
+);
+
+// Publishers
+registerRoute(
+  ({ url }) => url.pathname.match(new RegExp("publishers")),
+  new CacheFirst({
+      cacheName: 'publishers',
+      plugins: [
+          new CacheableResponsePlugin({
+              statuses: [200],
+          }),
+      ],
+  })
 );
